@@ -30,7 +30,7 @@ class Transfer
       if self.receiver.balance > amount
         self.receiver.balance -= amount
         self.sender.balance += amount
-        self.status = 'complete'
+        self.status = 'reversed'
       else
         self.status = 'rejected'
         "Transaction rejected. Please check your account balance."
