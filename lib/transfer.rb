@@ -26,5 +26,15 @@ class Transfer
   end
 
   def reverse_transfer
+    if self.valid? && self.status == 'complete'
+      if self.receiver.balance > amount
+        self.receiver.balance -= amount
+        self.sender.balance += amount
+        self.status = 'complete'
+      else
+        self.status = 'rejected'
+        "Transaction rejected. Please check your account balance."
+      end
+    end
   end
 end
